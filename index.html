@@ -3,21 +3,30 @@ layout: default
 ---
 
 <div class="home">
+    
+    <img class="site-logo"/>
+    <h1 class="site-title">{{ site.title }}</h1>
+    <p class="site-description">{{ site.description }}</p>
+    
+    <h1 class="page-heading">Episodes</h1>
 
-  <h1 class="page-heading">Posts</h1>
+    <div class="ep-list">
+        {% for post in site.posts %}
+        <article>
+            <div class="ep">
+                <header>
+                    <h1 class="ep-title">{{ post.title }}</h1>
+                    <p class="ep-date">{{ post.date | date: "%b %-d, %Y" }}</p>
+                </header>
+                <audio controls>
+                    <source src="{{ post.mp3 }}" type="audio/mpeg"/>
+                    Your browser does not support HTML5 audio. Please upgrade.
+                </audio>
+                <p class="ep-content">{{ post.content }}</p>
+            </div>
+        </article>
+        {% endfor %}
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
