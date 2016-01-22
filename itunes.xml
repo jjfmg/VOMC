@@ -17,7 +17,7 @@ layout: null
             <itunes:email>{{ site.email }}</itunes:email>
         </itunes:owner>
         <itunes:image href="{{ site.image }}" />
-        <itunes:category text="Community"/>
+        <itunes:category text="{{ site.category | xml_escape }}"/>
         {% for post in site.posts %}
         <item>
             <title>{{ post.title | xml_escape }}</title>
