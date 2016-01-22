@@ -4,34 +4,30 @@ layout: null
 <?xml version="1.0" encoding="UTF-8"?>
     <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
     <channel>
-        <title>{{</title>
-        <link>{{ site.baseurl | prepend: site.url }}</link>
+        <title>{{ site.title | xml_escape }}</title>
+        <link></link>
         <language>en-us</language>
-        <copyright>&#x2117; &amp; &#xA9; 2016 Irene De La Cruz &amp; Friends</copyright>
-        <itunes:subtitle>{{ site.description }}</itunes:subtitle>
-        <itunes:author>Irene De La Cruz</itunes:author>
-        <itunes:summary>All About Everything is a show about everything. Each week we dive into any subject known to man and talk about it as much as we can. Look for our podcast in the Podcasts app or in the iTunes Store</itunes:summary>
-        <description>All About Everything is a show about everything. Each week we dive into any subject known to man and talk about it as much as we can. Look for our podcast in the Podcasts app or in the iTunes Store</description>
+        <copyright>&#xA9; 2016 {{ site.author | xml_escape }}</copyright>
+        <itunes:subtitle>{{ site.subtitle | xml_escape }}</itunes:subtitle>
+        <itunes:author>{{ site.author | xml_escape }}</itunes:author>
+        <itunes:summary>{{ site.description | xml_escape }}</itunes:summary>
+        <description>{{ site.description | xml_escape }}</description>
         <itunes:owner>
-            <itunes:name>Joshua Gonzales</itunes:name>
-            <itunes:email>admin@joshua.bio</itunes:email>
+            <itunes:name>{{ site.owner }}</itunes:name>
+            <itunes:email>{{ site.email }}</itunes:email>
         </itunes:owner>
-        <itunes:image href="http://example.com/podcasts/everything/AllAboutEverything.jpg" />
-        <itunes:category text="Technology">
-            <itunes:category text="Gadgets"/>
-        </itunes:category>
-        <itunes:category text="TV &amp; Film"/>
+        <itunes:image href="{{ site.image }}" />
+        <itunes:category text="Community"/>
         {% for post in site.posts %}
         <item>
             <title>{{ post.title | xml_escape }}</title>
             <itunes:author>{{ site.author | xml_escape }}</itunes:author>
             <itunes:subtitle>{{ post.subtitle | xml_escape }}</itunes:subtitle>
             <itunes:summary>{{ post.content | xml_escape }}</itunes:summary>
-            <itunes:image href="http://example.com/podcasts/everything/AllAboutEverything/Episode1.jpg" />
             <enclosure url="{{ post.mp3 }}" length="{{ post.mp3length }}" type="audio/mpeg" />
-            <guid>{{ post.mp3 | xml_escape }}</guid>
+            <guid>{{ post.date | date_to_rfc822 }}</guid>
             <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-            <itunes:duration>post.duration</itunes:duration>
+            <itunes:duration>{{ post.duration | xml_escape }}</itunes:duration>
         </item>
         {% endfor %}
     </channel>

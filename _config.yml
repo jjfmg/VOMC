@@ -10,9 +10,11 @@ title: Voices of Merced County
 email: admin@joshua.bio
 owner: Joshua Gonzales
 author: Irene De La Cruz
+subtitle: A show about the wonderful folks of Merced County
 description: Voices of Merced County is a weekly podcast and radio show that airs every Saturday. Get to know the people of Merced County one interview at a time.
 baseurl: "/vomc"
 url: "https://joshua.bio"
+image: "https://s3-us-west-1.amazonaws.com/vomc-podcast/vomc.jpg"
 twitter_username: jjfmg
 github_username:  jjfmg
 
